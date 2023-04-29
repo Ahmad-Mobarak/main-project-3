@@ -21,18 +21,29 @@ namespace main_project_3
 
         private void button5_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Select * from loginu where id =" + textBox1.Text + " ", conn);
-            SqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
+            SqlDataAdapter dau = new SqlDataAdapter("SELECT count(*) FROM loginu WHERE id = '" + textBox1.Text + "' AND password ='" + textBox2.Text + "'", conn);
+            DataTable dtu = new DataTable();
+            dau.Fill(dtu);
+            if (dtu.Rows[0][0].ToString() == "1")
             {
-                textBox2.Text = rdr.GetValue(1).ToString();
-                textBox3.Text = rdr.GetValue(2).ToString();
-                textBox4.Text = rdr.GetValue(3).ToString();
-                textBox6.Text = rdr.GetValue(4).ToString();
-                textBox5.Text = rdr.GetValue(5).ToString();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select * from loginu where id =" + textBox1.Text + " ", conn);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    textBox2.Text = rdr.GetValue(1).ToString();
+                    textBox3.Text = rdr.GetValue(2).ToString();
+                    textBox4.Text = rdr.GetValue(3).ToString();
+                    textBox6.Text = rdr.GetValue(4).ToString();
+                    textBox5.Text = rdr.GetValue(5).ToString();
+                }
+                conn.Close();
             }
-            conn.Close();
+            else
+            {
+                MessageBox.Show("Check ID and password");
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

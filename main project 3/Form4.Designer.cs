@@ -48,9 +48,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(917, 363);
+            this.button1.Location = new System.Drawing.Point(893, 363);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 40);
+            this.button1.Size = new System.Drawing.Size(110, 40);
             this.button1.TabIndex = 100;
             this.button1.Text = "back";
             this.button1.UseVisualStyleBackColor = true;
